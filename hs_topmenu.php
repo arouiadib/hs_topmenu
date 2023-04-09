@@ -107,10 +107,10 @@ class Hs_Topmenu extends Module implements WidgetInterface
         {
             case 'index':
                 $this->menuState['about']['active'] =  true;
-                $this->menuState['about']['destination'] = '#navbar';
-                $this->menuState['catalog']['destination'] = '#wrapper';
-                $this->menuState['reparation']['destination'] = '#contactSection';
-                $this->menuState['blog']['destination'] = '#blog-recent-posts-home';
+                $this->menuState['about']['destination'] = '#intro-repair';
+                $this->menuState['catalog']['destination'] = '#nos-reparations';
+                $this->menuState['reparation']['destination'] = '#prendre-rdv';
+                $this->menuState['blog']['destination'] = '#stories';
                 break;
             case 'order':
             case 'cart':
