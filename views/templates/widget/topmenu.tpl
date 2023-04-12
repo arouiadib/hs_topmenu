@@ -60,15 +60,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 hidden-sm-down" id="_desktop_logo">
-                    {if $shop.logo_details}
-                        {if $page.page_name == 'index'}
-                            <h1>
-                                {renderLogo}
-                            </h1>
-                        {else}
-                            {renderLogo}
-                        {/if}
-                    {/if}
+                    {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
                 </div>
                 <div class="header-top-right col-md-10 col-sm-12 position-static">
                     {hook h='displayTop'}
@@ -88,8 +80,6 @@
 {/block}
 
 
-
-
 {if $repair}
     {block name='header_nav'}
         <nav id="mainNav" class="header-nav navbar navbar-light navbar-fixed-top">
@@ -97,7 +87,6 @@
                 <div class="row">
                     <div class="hidden-sm-down">
                         <div class="col-md-10 col-xs-12 nav1">
-                            {hook h='displayNav1'}
                             <div>
                                 {include file='module:hs_topmenu/views/templates/widget/navigation_links.tpl'}
                             </div>
