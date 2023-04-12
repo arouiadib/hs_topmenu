@@ -19,6 +19,21 @@ class Hs_Topmenu extends Module implements WidgetInterface
     protected $contactLink = '';
     protected $rdvLink = '';
 
+    const harkShops = [
+        'mainShop' => [
+            'id' => 1
+        ],
+        'subShops' => [
+            'repair' => [
+                'id' => 4
+            ],
+            'records' => [
+                'id' => 6
+            ]
+        ]
+    ];
+
+
     public function __construct()
     {
         $this->name = 'hs_topmenu';
@@ -96,6 +111,12 @@ class Hs_Topmenu extends Module implements WidgetInterface
     public function renderWidget($hookName = null, array $configuration = [])
     {
 
+       //$this->getHarkShops();
+/*        $id_shop = (int)Context::getContext()->shop->id;
+echo '<pre>';
+        var_dump(Context::getContext()->shop->theme_name);die;*/
+        if(Context::getContext()->shop->theme_name != 'hifi-store') return;
+
         $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
 
         return $this->display(__FILE__, $this->templatesFolder . $this->templateFile);
@@ -155,4 +176,26 @@ class Hs_Topmenu extends Module implements WidgetInterface
         return true;
     }
 
+    protected function getHarkShops() {
+        $shopList = Context::getContext()->shop->getShops(false, true);
+        echo "<pre>";
+        $moduleShops = [];
+        foreach ($shopList as $key => $shop) {
+            if($key == 1) {
+                $moduleShops['mainShop']['url'] = '';
+                $moduleShops['mainShop']['logo'] = '';
+                continue;
+            }
+
+
+            $moduleShops['subshops'][] = [
+                'id' => $shop['id_shop'],
+                'logo' => _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']) ,
+                'url' => $shop['domain_ssl'] . $shop['uri']
+
+            ];
+        }
+
+        var_dump($moduleShops);die;
+    }
 }
