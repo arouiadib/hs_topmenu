@@ -115,7 +115,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
 /*        $id_shop = (int)Context::getContext()->shop->id;
 echo '<pre>';
         var_dump(Context::getContext()->shop->theme_name);die;*/
-        if(Context::getContext()->shop->theme_name != 'hifi-store') return;
+        /*if(Context::getContext()->shop->theme_name != 'hifi-store') return;*/
 
         $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
 
@@ -168,6 +168,7 @@ echo '<pre>';
             'menustates' => $this->menuState,
             'store_name' => Configuration::get('PS_SHOP_NAME'),
             'store_link' => $this->homeLink,
+            'repair' => Context::getContext()->shop->theme_name == 'hifi-store'
         ];
     }
 
