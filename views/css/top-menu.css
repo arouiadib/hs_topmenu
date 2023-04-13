@@ -1,0 +1,28 @@
+ul.main-menu {
+    list-style-type: none;
+}
+
+ul.main-menu li {
+    padding: 5px;
+    display: inline-block;
+}
+
+ul.main-menu li a {
+    height: 50px;
+    width: 100px;
+    display: inline-block;
+}
+
+ul.main-menu li img {
+    height: 50px;
+    width: 100px;
+    display: inline-block;
+
+}
+ul.main-menu li img.active {
+    -webkit-filter: grayscale(100%) contrast(30%);
+    -moz-filter: grayscale(100%) contrast(30%);
+    -o-filter: grayscale(100%) contrast(30%);
+    -ms-filter: grayscale(100%) contrast(30%);
+    filter: grayscale(100%) contrast(30%);
+}

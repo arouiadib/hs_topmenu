@@ -108,7 +108,6 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
     public function getWidgetVariables($hookName = null, array $configuration = [])
     {
-
         $modulesShops = $this->getHarkShops();
         switch ($this->context->controller->getPageName())
         {
@@ -174,7 +173,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
             if($key == 1) {
                 $moduleShops['mainShop']['id'] = $shop['id_shop'];
                 $moduleShops['mainShop']['logo'] = _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']);
-                $moduleShops['mainShop']['url'] = $shop['domain_ssl'] . $shop['uri'];
+                $moduleShops['mainShop']['url'] =  $shop['uri'];
                 continue;
             }
 
@@ -182,7 +181,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
             $moduleShops['subshops'][] = [
                 'id' => $shop['id_shop'],
                 'logo' => _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']) ,
-                'url' => $shop['domain_ssl'] . $shop['uri']
+                'url' =>  $shop['uri']
 
             ];
         }

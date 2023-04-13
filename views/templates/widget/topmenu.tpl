@@ -67,7 +67,6 @@
                             </div>
                         </div>
                         <div class="col-md-2 right-nav">
-                            {hook h='displayNav2'}
                         </div>
                     </div>
                     <div class="hidden-md-up mobile">
