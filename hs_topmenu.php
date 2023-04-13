@@ -19,20 +19,6 @@ class Hs_Topmenu extends Module implements WidgetInterface
     protected $contactLink = '';
     protected $rdvLink = '';
 
-    const harkShops = [
-        'mainShop' => [
-            'id' => 1
-        ],
-        'subShops' => [
-            'repair' => [
-                'id' => 4
-            ],
-            'records' => [
-                'id' => 6
-            ]
-        ]
-    ];
-
 
     public function __construct()
     {
@@ -108,14 +94,13 @@ class Hs_Topmenu extends Module implements WidgetInterface
         return(parent::uninstall());
     }
 
+    public function hookActionFrontControllerSetMedia()
+    {
+        $this->context->controller->addCSS($this->_path . 'views/css/top-menu.css', 'all');
+    }
+
     public function renderWidget($hookName = null, array $configuration = [])
     {
-
-       //$this->getHarkShops();
-/*        $id_shop = (int)Context::getContext()->shop->id;
-echo '<pre>';
-        var_dump(Context::getContext()->shop->theme_name);die;*/
-        /*if(Context::getContext()->shop->theme_name != 'hifi-store') return;*/
 
         $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
 
@@ -124,6 +109,8 @@ echo '<pre>';
 
     public function getWidgetVariables($hookName = null, array $configuration = [])
     {
+
+        $modulesShops = $this->getHarkShops();
         switch ($this->context->controller->getPageName())
         {
             case 'index':
@@ -168,7 +155,8 @@ echo '<pre>';
             'menustates' => $this->menuState,
             'store_name' => Configuration::get('PS_SHOP_NAME'),
             'store_link' => $this->homeLink,
-            'repair' => Context::getContext()->shop->theme_name == 'hifi-store'
+            'repair' => Context::getContext()->shop->theme_name == 'hifi-store',
+            'shops' => $modulesShops
         ];
     }
 
@@ -179,12 +167,15 @@ echo '<pre>';
 
     protected function getHarkShops() {
         $shopList = Context::getContext()->shop->getShops(false, true);
-        echo "<pre>";
+        //echo "<pre>";
         $moduleShops = [];
+
+        $moduleShops['current_shop_id'] = Context::getContext()->shop->id;
         foreach ($shopList as $key => $shop) {
             if($key == 1) {
-                $moduleShops['mainShop']['url'] = '';
-                $moduleShops['mainShop']['logo'] = '';
+                $moduleShops['mainShop']['id'] = $shop['id_shop'];
+                $moduleShops['mainShop']['logo'] = _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']);
+                $moduleShops['mainShop']['url'] = $shop['domain_ssl'] . $shop['uri'];
                 continue;
             }
 
@@ -196,7 +187,8 @@ echo '<pre>';
 
             ];
         }
+       // var_dump($moduleShops);die;
 
-        var_dump($moduleShops);die;
+        return $moduleShops;
     }
 }
