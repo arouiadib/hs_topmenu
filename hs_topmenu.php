@@ -81,8 +81,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
     public function install()
     {
-        if(!parent::install())
-        {
+        if (!parent::install() || !(bool)$this->registerHook('actionFrontControllerSetMedia')) {
             return false;
         }
 
