@@ -23,12 +23,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-{block name='header_banner'}
-    <div class="header-banner">
-        {hook h='displayBanner'}
-    </div>
-{/block}
-
 {block name='header_nav'}
     <nav class="header-nav">
         <div class="container">
@@ -57,7 +51,7 @@
 
 {if $repair}
     {block name='header_nav'}
-        <nav id="mainNav" class="header-nav navbar navbar-light navbar-fixed-top">
+        <nav id="mainNav" class="header-nav navbar navbar-light {*navbar-fixed-top*}">
             <div class="container-fluid">
                 <div class="row">
                     <div class="hidden-sm-down">
