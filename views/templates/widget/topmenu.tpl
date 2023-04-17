@@ -24,16 +24,32 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='header_nav'}
-    <nav class="header-nav">
-        <div class="container">
+    <nav id="main-nav" class="header-nav">
+        <div class="container-fluid">
             <div class="row">
                 <div class="hidden-sm-down">
-                    <div class="col-md-5 col-xs-12">
+                    <div class="col-md-6 col-xs-12">
                         {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
-                        {hook h='displayNav1'}
+                        {*{hook h='displayNav1'}*}
                     </div>
-                    <div class="col-md-7 right-nav">
-                        {hook h='displayNav2'}
+                    <div class="col-md-6 right-nav">
+                        <div class="col-md-8">
+                            {hook h='displayNav2'}
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                <a target="_blank" href="https://www.instagram.com/blaustern_fotografie/">
+                                    <img src="{$shops.mainShop.logo}" width="30">
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a target="_blank" href="https://www.instagram.com/blaustern_fotografie/">
+                                    <img src="{$shops.mainShop.logo}" width="30">
+                                </a>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
                 <div class="hidden-md-up text-sm-center mobile">
@@ -48,10 +64,10 @@
     </nav>
 {/block}
 
-
 {if $repair}
     {block name='header_nav'}
-        <nav id="mainNav" class="header-nav navbar navbar-light {*navbar-fixed-top*}">
+        <nav id="{*mainNav*} second-nav" class="header-nav navbar {*navbar-fixed-top*}">
+            {*todo: keep id = mainNav for javascript in hompegae.js*}
             <div class="container-fluid">
                 <div class="row">
                     <div class="hidden-sm-down">

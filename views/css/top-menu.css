@@ -1,23 +1,25 @@
+.menu-container {
+    position: relative;
+    height: 71px;
+}
 ul.main-menu {
     list-style-type: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 ul.main-menu li {
-    padding: 5px;
     display: inline-block;
 }
 
 ul.main-menu li a {
-    height: 50px;
-    width: 100px;
     display: inline-block;
 }
 
 ul.main-menu li img {
-    height: 50px;
     width: 100px;
     display: inline-block;
-
 }
 ul.main-menu li img.active {
     -webkit-filter: grayscale(100%) contrast(30%);
@@ -25,4 +27,19 @@ ul.main-menu li img.active {
     -o-filter: grayscale(100%) contrast(30%);
     -ms-filter: grayscale(100%) contrast(30%);
     filter: grayscale(100%) contrast(30%);
+}
+
+ul.main-menu li.main-site-logo {
+    width: 128px;
+    display: inline-block;
+}
+
+ul.main-menu li.main-site-logo a {
+    width: 128px;
+    display: inline-block;
+}
+
+ul.main-menu li.main-site-logo img {
+    width: 128px;
+    display: inline-block;
 }

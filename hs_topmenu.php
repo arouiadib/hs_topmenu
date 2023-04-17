@@ -153,7 +153,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
             'menustates' => $this->menuState,
             'store_name' => Configuration::get('PS_SHOP_NAME'),
             'store_link' => $this->homeLink,
-            'repair' => Context::getContext()->shop->theme_name == 'hifi-store',
+            'repair' => Context::getContext()->shop->theme_name == 'hark-repair',
             'shops' => $modulesShops
         ];
     }
@@ -185,7 +185,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
             ];
         }
-       // var_dump($moduleShops);die;
+        ///var_dump($moduleShops);die;
 
         return $moduleShops;
     }
