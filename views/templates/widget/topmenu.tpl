@@ -44,6 +44,7 @@
                                 <a target="_blank" href="{$social.instagram.url}">
                                     <img src="{$social.instagram.img_src}" height="24">
                                 </a>
+                            </div>
                         </div>
                     </div>
                 </div>
