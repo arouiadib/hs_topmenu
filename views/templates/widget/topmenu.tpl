@@ -49,12 +49,28 @@
                     </div>
                 </div>
                 <div class="hidden-md-up text-sm-center mobile">
-                    <div class="float-xs-left" id="menu-icon">
+                    <div class="float-xs-right" id="menu-icon">
                         <i class="material-icons d-inline">&#xE5D2;</i>
                     </div>
-                    <div class="top-logo" id="_mobile_logo"></div>
+
+                    <div class="top-logo" id="_mobile_logo">
+                        <a href="{$shops.mainShop.url}">
+                            <img
+                                    class="logo img-fluid"
+                                    src="{$shops.mainShop.logo}"
+                                    alt="{*{$shop.name}*}"
+                                    width="{*{$shop.logo_details.width}*}"
+                                    height="{*{$shop.logo_details.height}*}">
+                        </a>
+                    </div>
+                    <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
+                        <div class="js-top-menu mobile" id="_mobile_top_menu">
+                            {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
+
             </div>
         </div>
     </nav>
