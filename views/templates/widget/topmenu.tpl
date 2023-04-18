@@ -37,7 +37,7 @@
                             {hook h='displayNav2'}
                         </div>
                         <div class="col-md-4">
-                            <div class="pr-0 float-xs-right">
+                            <div class="pr-0 float-xs-right social-links">
                                 <a target="_blank" href="{$social.youtube.url}" class="pr-0">
                                     <img src="{$social.youtube.img_src}" height="24">
                                 </a>
