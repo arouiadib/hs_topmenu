@@ -154,7 +154,17 @@ class Hs_Topmenu extends Module implements WidgetInterface
             'store_name' => Configuration::get('PS_SHOP_NAME'),
             'store_link' => $this->homeLink,
             'repair' => Context::getContext()->shop->theme_name == 'hark-repair',
-            'shops' => $modulesShops
+            'shops' => $modulesShops,
+            'social' => [
+                'youtube' => [
+                    'url' => '',
+                    'img_src' => $this->getModulePath() . 'views/img/youtube.png',
+                ],
+                'instagram' => [
+                    'url' => '',
+                    'img_src' => $this->getModulePath() . 'views/img/instagram.png',
+                ]
+            ]
         ];
     }
 
@@ -188,5 +198,10 @@ class Hs_Topmenu extends Module implements WidgetInterface
         ///var_dump($moduleShops);die;
 
         return $moduleShops;
+    }
+
+    public function getModulePath()
+    {
+        return '/modules/'.$this->name.'/';
     }
 }

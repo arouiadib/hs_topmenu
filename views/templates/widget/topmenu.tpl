@@ -37,19 +37,14 @@
                             {hook h='displayNav2'}
                         </div>
                         <div class="col-md-4">
-                            <div class="col-md-6">
-                                <a target="_blank" href="https://www.instagram.com/blaustern_fotografie/">
-                                    <img src="{$shops.mainShop.logo}" width="30">
+                            <div class="pr-0 float-xs-right">
+                                <a target="_blank" href="{$social.youtube.url}" class="pr-0">
+                                    <img src="{$social.youtube.img_src}" height="24">
                                 </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a target="_blank" href="https://www.instagram.com/blaustern_fotografie/">
-                                    <img src="{$shops.mainShop.logo}" width="30">
+                                <a target="_blank" href="{$social.instagram.url}">
+                                    <img src="{$social.instagram.img_src}" height="24">
                                 </a>
-                            </div>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="hidden-md-up text-sm-center mobile">
