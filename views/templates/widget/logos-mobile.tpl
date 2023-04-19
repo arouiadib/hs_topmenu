@@ -1,14 +1,14 @@
 <ul class="main-menu">
-    <li class="main-site-logo">
+{*    <li class="main-site-logo">
         <a href="{$shops.mainShop.url}">
             <img
                 class="logo img-fluid"
                 src="{$shops.mainShop.logo}"
-                alt="{*{$shop.name}*}"
-                width="{*{$shop.logo_details.width}*}"
-                height="{*{$shop.logo_details.height}*}">
+                alt="*}{*{$shop.name}*}{*"
+                width="*}{*{$shop.logo_details.width}*}{*"
+                height="*}{*{$shop.logo_details.height}*}{*">
         </a>
-    </li>
+    </li>*}
     {foreach from=$shops.subshops item=shop key=key}
         <li>
             {if $shops.current_shop_id == $shop.id}

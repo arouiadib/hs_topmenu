@@ -96,6 +96,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
     public function hookActionFrontControllerSetMedia()
     {
         $this->context->controller->addCSS($this->_path . 'views/css/top-menu.css', 'all');
+        $this->context->controller->addJS($this->_path . 'views/js/top-menu.js', 'all');
     }
 
     public function renderWidget($hookName = null, array $configuration = [])
@@ -158,11 +159,11 @@ class Hs_Topmenu extends Module implements WidgetInterface
             'social' => [
                 'youtube' => [
                     'url' => '',
-                    'img_src' => $this->getModulePath() . 'views/img/youtube.png',
+                    'img_src' => $this->getModulePath() . 'views/img/Youtube.svg',
                 ],
                 'instagram' => [
                     'url' => '',
-                    'img_src' => $this->getModulePath() . 'views/img/instagram.png',
+                    'img_src' => $this->getModulePath() . 'views/img/Insta.svg',
                 ]
             ]
         ];
@@ -175,25 +176,37 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
     protected function getHarkShops() {
         $shopList = Context::getContext()->shop->getShops(false, true);
-        //echo "<pre>";
+/*        echo "<pre>";
+        var_dump($shopList);die;*/
         $moduleShops = [];
 
         $moduleShops['current_shop_id'] = Context::getContext()->shop->id;
         foreach ($shopList as $key => $shop) {
             if($key == 1) {
                 $moduleShops['mainShop']['id'] = $shop['id_shop'];
-                $moduleShops['mainShop']['logo'] = _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']);
+                //$moduleShops['mainShop']['logo'] = _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']);
+                $moduleShops['mainShop']['logo'] = $this->getModulePath() . 'views/img/Hark.svg';
+
                 $moduleShops['mainShop']['url'] =  $shop['uri'];
                 continue;
             }
 
+            if ($shop['theme_name'] === 'hark-repair') {
+                $moduleShops['subshops'][] = [
+                    'id' => $shop['id_shop'],
+                    'logo' => $this->getModulePath() . 'views/img/repair.svg',
+                    'url' =>  $shop['uri']
 
-            $moduleShops['subshops'][] = [
-                'id' => $shop['id_shop'],
-                'logo' => _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']) ,
-                'url' =>  $shop['uri']
+                ];
+            } else {
+                $moduleShops['subshops'][] = [
+                    'id' => $shop['id_shop'],
+                    'logo' => $this->getModulePath() . 'views/img/records.svg' ,
+                    'url' =>  $shop['uri']
 
-            ];
+                ];
+            }
+
         }
         ///var_dump($moduleShops);die;
 

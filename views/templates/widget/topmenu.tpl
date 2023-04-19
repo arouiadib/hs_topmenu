@@ -23,13 +23,21 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+
+{if $repair}
+    {block name='header_nav'}
+    {/block}
+{/if}
+
 {block name='header_nav'}
     <nav id="main-nav" class="header-nav">
         <div class="container-fluid">
             <div class="row">
                 <div class="hidden-sm-down">
                     <div class="col-md-6 col-xs-12">
-                        {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
+                        <div class="menu-container">
+                                {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
+                        </div>
                         {*{hook h='displayNav1'}*}
                     </div>
                     <div class="col-md-6 right-nav">
@@ -49,37 +57,45 @@
                     </div>
                 </div>
                 <div class="hidden-md-up text-sm-center mobile">
-                    <div class="float-xs-right" id="menu-icon">
-                        <i class="material-icons d-inline">&#xE5D2;</i>
+                    <div class="hamburger float-xs-right p-1" id="menu-icon">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
                     </div>
 
-                    <div class="top-logo" id="_mobile_logo">
+                    <div class="col-xs-6 top-logo p-1" id="_mobile_logo">
                         <a href="{$shops.mainShop.url}">
                             <img
-                                    class="logo img-fluid"
-                                    src="{$shops.mainShop.logo}"
-                                    alt="{*{$shop.name}*}"
-                                    width="{*{$shop.logo_details.width}*}"
-                                    height="{*{$shop.logo_details.height}*}">
+                                class="logo img-fluid"
+                                src="{$shops.mainShop.logo}"
+                                alt="{*{$shop.name}*}"
+                                width="{*{$shop.logo_details.width}*}"
+                                height="{*{$shop.logo_details.height}*}">
                         </a>
-                    </div>
-                    <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
-                        <div class="js-top-menu mobile" id="_mobile_top_menu">
-                            {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
-                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-
             </div>
         </div>
     </nav>
+    <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
+        <div class="js-top-menu menu-container mobile" id="_mobile_top_menu">
+           {include file='module:hs_topmenu/views/templates/widget/logos-mobile.tpl'}
+        </div>
+    </div>
 {/block}
 
+{*
 {if $repair}
     {block name='header_nav'}
-        <nav id="{*mainNav*} second-nav" class="header-nav navbar {*navbar-fixed-top*}">
-            {*todo: keep id = mainNav for javascript in hompegae.js*}
+        <nav id="*}
+{*mainNav*}{*
+ second-nav" class="header-nav navbar *}
+{*navbar-fixed-top*}{*
+">
+            *}
+{*todo: keep id = mainNav for javascript in hompegae.js*}{*
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="hidden-sm-down">
@@ -117,3 +133,4 @@
         </nav>
     {/block}
 {/if}
+*}
