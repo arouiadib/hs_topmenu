@@ -45,7 +45,7 @@
                             {hook h='displayNav2'}
                         </div>
                         <div class="col-md-4">
-                            {include file='module:hs_topmenu/views/templates/widget/social.tpl'}
+                            {hook h="displaySocialButtons" mod="hs_topmenu"}
                         </div>
                     </div>
                 </div>

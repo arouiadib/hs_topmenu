@@ -81,7 +81,10 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
     public function install()
     {
-        if (!parent::install() || !(bool)$this->registerHook('actionFrontControllerSetMedia')) {
+        if (!parent::install()
+            || !(bool)$this->registerHook('actionFrontControllerSetMedia')
+            || !(bool)$this->registerHook('displaySocialButtons')
+        ) {
             return false;
         }
 
@@ -156,7 +159,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
             'store_link' => $this->homeLink,
             'repair' => Context::getContext()->shop->theme_name == 'hark-repair',
             'shops' => $modulesShops,
-            'social' => [
+            /*'social' => [
                 'youtube' => [
                     'url' => '',
                     'img_src' => $this->getModulePath() . 'views/img/Youtube.svg',
@@ -165,7 +168,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
                     'url' => '',
                     'img_src' => $this->getModulePath() . 'views/img/Insta.svg',
                 ]
-            ]
+            ]*/
         ];
     }
 
@@ -221,7 +224,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
     /**
      * @return string
      */
-    public function displaySocialButtons()
+    public function hookDisplaySocialButtons()
     {
         $social = [
             'youtube' => [
@@ -235,8 +238,6 @@ class Hs_Topmenu extends Module implements WidgetInterface
         ];
         $this->context->smarty->assign('social', $social);
 
-        $this->fetch('module:hs_topmenu/views/templates/widget/social.tpl');
-
-
+        return $this->fetch('module:hs_topmenu/views/templates/widget/social.tpl');
     }
 }
