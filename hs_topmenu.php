@@ -235,7 +235,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
         ];
         $this->context->smarty->assign('social', $social);
 
-        $this->fetch('');
+        $this->fetch('module:hs_topmenu/views/templates/widget/social.tpl');
 
 
     }
