@@ -217,4 +217,26 @@ class Hs_Topmenu extends Module implements WidgetInterface
     {
         return '/modules/'.$this->name.'/';
     }
+
+    /**
+     * @return string
+     */
+    public function displaySocialButtons()
+    {
+        $social = [
+            'youtube' => [
+                'url' => '',
+                'img_src' => $this->getModulePath() . 'views/img/Youtube.svg',
+            ],
+            'instagram' => [
+                'url' => '',
+                'img_src' => $this->getModulePath() . 'views/img/Insta.svg',
+            ]
+        ];
+        $this->context->smarty->assign('social', $social);
+
+        $this->fetch('');
+
+
+    }
 }
