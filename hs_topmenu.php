@@ -84,7 +84,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
         if (!parent::install()
             || !(bool)$this->registerHook('actionFrontControllerSetMedia')
             || !(bool)$this->registerHook('displaySocialButtons')
-            || !(bool)$this->registerHook('displayLinkListFooter')
+            || !(bool)$this->registerHook('displaySubShopsBlocks')
         ) {
             return false;
         }
@@ -179,8 +179,6 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
     protected function getHarkShops() {
         $shopList = Context::getContext()->shop->getShops(false, true);
-/*        echo "<pre>";
-        var_dump($shopList);die;*/
         $moduleShops = [];
 
         $moduleShops['current_shop_id'] = Context::getContext()->shop->id;
@@ -195,10 +193,13 @@ class Hs_Topmenu extends Module implements WidgetInterface
             }
 
             if ($shop['theme_name'] === 'hark-repair') {
+                $repairShop = new Shop((int)$shop['id_shop']);
+                //var_dump($repairShop->getAddress() );die;
                 $moduleShops['subshops'][] = [
                     'id' => $shop['id_shop'],
                     'logo' => $this->getModulePath() . 'views/img/repair.svg',
-                    'url' =>  $shop['uri']
+                    'url' =>  $shop['uri'],
+
 
                 ];
             } else {
@@ -246,7 +247,8 @@ class Hs_Topmenu extends Module implements WidgetInterface
      */
     public function hookDisplaySubShopsBlocks()
     {
-        $modulesShops = $this->getHarkShops();
+        $stores = Store::getStores($this->context->language->id);
+        $this->context->smarty->assign('stores', $stores);
 
         return $this->fetch('module:hs_topmenu/views/templates/widget/footer_addresses.tpl');
     }
