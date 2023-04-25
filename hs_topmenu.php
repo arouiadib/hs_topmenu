@@ -84,6 +84,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
         if (!parent::install()
             || !(bool)$this->registerHook('actionFrontControllerSetMedia')
             || !(bool)$this->registerHook('displaySocialButtons')
+            || !(bool)$this->registerHook('displayLinkListFooter')
         ) {
             return false;
         }
@@ -104,7 +105,6 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
     public function renderWidget($hookName = null, array $configuration = [])
     {
-
         $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
 
         return $this->display(__FILE__, $this->templatesFolder . $this->templateFile);
@@ -239,5 +239,15 @@ class Hs_Topmenu extends Module implements WidgetInterface
         $this->context->smarty->assign('social', $social);
 
         return $this->fetch('module:hs_topmenu/views/templates/widget/social.tpl');
+    }
+
+    /**
+     * @return string
+     */
+    public function hookDisplaySubShopsBlocks()
+    {
+        $modulesShops = $this->getHarkShops();
+
+        return $this->fetch('module:hs_topmenu/views/templates/widget/footer_addresses.tpl');
     }
 }
