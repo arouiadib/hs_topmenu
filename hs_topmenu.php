@@ -237,6 +237,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
                     if ($store['name'] === 'repair') {
                         $moduleShops['subshops'][] = [
                             'id' => $shop['id_shop'],
+                            'name' => 'Repair',
                             'logo' => $this->getModulePath() . 'views/img/repair.svg',
                             'url' =>  $shop['uri'],
                             'address1' => $store['address1'],
@@ -250,6 +251,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
                     if ($store['name'] === 'records') {
                         $moduleShops['subshops'][] = [
                             'id' => $shop['id_shop'],
+                            'name' => 'Records',
                             'logo' => $this->getModulePath() . 'views/img/records.svg' ,
                             'url' =>  $shop['uri'],
                             'address1' => $store['address1'],
