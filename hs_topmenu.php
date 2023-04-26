@@ -85,6 +85,8 @@ class Hs_Topmenu extends Module implements WidgetInterface
             || !(bool)$this->registerHook('actionFrontControllerSetMedia')
             || !(bool)$this->registerHook('displaySocialButtons')
             || !(bool)$this->registerHook('displaySubShopsBlocks')
+            || !(bool)$this->registerHook('displayFooterRepairLinkList')
+            || !(bool)$this->registerHook('displayFooterRecordsLinkList')
         ) {
             return false;
         }
@@ -177,45 +179,6 @@ class Hs_Topmenu extends Module implements WidgetInterface
         return true;
     }
 
-    protected function getHarkShops() {
-        $shopList = Context::getContext()->shop->getShops(false, true);
-        $moduleShops = [];
-
-        $moduleShops['current_shop_id'] = Context::getContext()->shop->id;
-        foreach ($shopList as $key => $shop) {
-            if($key == 1) {
-                $moduleShops['mainShop']['id'] = $shop['id_shop'];
-                //$moduleShops['mainShop']['logo'] = _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']);
-                $moduleShops['mainShop']['logo'] = $this->getModulePath() . 'views/img/Hark.svg';
-
-                $moduleShops['mainShop']['url'] =  $shop['uri'];
-                continue;
-            }
-
-            if ($shop['theme_name'] === 'hark-repair') {
-                $repairShop = new Shop((int)$shop['id_shop']);
-                //var_dump($repairShop->getAddress() );die;
-                $moduleShops['subshops'][] = [
-                    'id' => $shop['id_shop'],
-                    'logo' => $this->getModulePath() . 'views/img/repair.svg',
-                    'url' =>  $shop['uri'],
-
-
-                ];
-            } else {
-                $moduleShops['subshops'][] = [
-                    'id' => $shop['id_shop'],
-                    'logo' => $this->getModulePath() . 'views/img/records.svg' ,
-                    'url' =>  $shop['uri']
-
-                ];
-            }
-
-        }
-        ///var_dump($moduleShops);die;
-
-        return $moduleShops;
-    }
 
     public function getModulePath()
     {
@@ -247,9 +210,56 @@ class Hs_Topmenu extends Module implements WidgetInterface
      */
     public function hookDisplaySubShopsBlocks()
     {
-        $stores = Store::getStores($this->context->language->id);
-        $this->context->smarty->assign('stores', $stores);
+        $modulesShops = $this->getHarkShops();
+        $this->context->smarty->assign('shops', $modulesShops);
 
         return $this->fetch('module:hs_topmenu/views/templates/widget/footer_addresses.tpl');
+    }
+
+    protected function getHarkShops() {
+        $stores = Store::getStores($this->context->language->id);
+
+        $shopList = Context::getContext()->shop->getShops(false, true);
+        $moduleShops = [];
+
+        $moduleShops['current_shop_id'] = Context::getContext()->shop->id;
+        foreach ($shopList as $key => $shop) {
+            if($key == 1) {
+                $moduleShops['mainShop']['id'] = $shop['id_shop'];
+                $moduleShops['mainShop']['logo'] = $this->getModulePath() . 'views/img/Hark.svg';
+
+                $moduleShops['mainShop']['url'] =  $shop['uri'];
+                continue;
+            }
+
+            if ($shop['theme_name'] === 'hark-repair') {
+                foreach ($stores as $store) {
+                    if ($store['name'] === 'repair') {
+                        $moduleShops['subshops'][] = [
+                            'id' => $shop['id_shop'],
+                            'logo' => $this->getModulePath() . 'views/img/repair.svg',
+                            'url' =>  $shop['uri'],
+                            'address1' => $store['address1'],
+                            'address2' => $store['address2'],
+                        ];
+                    }
+                }
+
+            } else {
+                foreach ($stores as $store) {
+                    if ($store['name'] === 'records') {
+                        $moduleShops['subshops'][] = [
+                            'id' => $shop['id_shop'],
+                            'logo' => $this->getModulePath() . 'views/img/records.svg' ,
+                            'url' =>  $shop['uri'],
+                            'address1' => $store['address1'],
+                            'address2' => $store['address2']
+                        ];
+                    }
+                }
+            }
+        }
+
+        return $moduleShops;
     }
 }
