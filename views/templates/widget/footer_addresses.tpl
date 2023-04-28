@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-lg-4 hidden-sm-down"></div>
+    <div class="col-xl-4 hidden-sm-down"></div>
     {foreach from=$shops.subshops item=shop key=key}
-        <div class="col-sm-6 col-lg-4 footer-block">
+        <div class="col-sm-6 col-xl-4 footer-block">
             <div class="footer-block-logo">
                 <img
                     class="logo img-fluid"
