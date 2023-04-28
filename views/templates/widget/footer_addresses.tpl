@@ -1,8 +1,8 @@
 <div class="">
     <div class="row">
-        <div class="col-md-4"></div>
+        <div class="col-md-4 hidden-sm-down"></div>
         {foreach from=$shops.subshops item=shop key=key}
-            <div class="col-md-4">
+            <div class="col-sm-6 col-md-4">
                 <div>
                     <img
                         class="logo img-fluid"
