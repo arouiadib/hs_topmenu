@@ -242,6 +242,8 @@ class Hs_Topmenu extends Module implements WidgetInterface
                             'url' =>  $shop['uri'],
                             'address1' => $store['address1'],
                             'address2' => $store['address2'],
+                            'phone' => $store['phone'],
+                            'email' => $store['email']
                         ];
                     }
                 }
@@ -255,7 +257,9 @@ class Hs_Topmenu extends Module implements WidgetInterface
                             'logo' => $this->getModulePath() . 'views/img/records.svg' ,
                             'url' =>  $shop['uri'],
                             'address1' => $store['address1'],
-                            'address2' => $store['address2']
+                            'address2' => $store['address2'],
+                            'phone' => $store['phone'],
+                            'email' => $store['email']
                         ];
                     }
                 }
