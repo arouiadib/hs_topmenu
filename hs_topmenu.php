@@ -81,7 +81,13 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
     public function install()
     {
-        if (!parent::install() || !(bool)$this->registerHook('actionFrontControllerSetMedia')) {
+        if (!parent::install()
+            || !(bool)$this->registerHook('actionFrontControllerSetMedia')
+            || !(bool)$this->registerHook('displaySocialButtons')
+            || !(bool)$this->registerHook('displaySubShopsBlocks')
+            || !(bool)$this->registerHook('displayFooterRepairLinkList')
+            || !(bool)$this->registerHook('displayFooterRecordsLinkList')
+        ) {
             return false;
         }
 
@@ -101,7 +107,6 @@ class Hs_Topmenu extends Module implements WidgetInterface
 
     public function renderWidget($hookName = null, array $configuration = [])
     {
-
         $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
 
         return $this->display(__FILE__, $this->templatesFolder . $this->templateFile);
@@ -156,7 +161,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
             'store_link' => $this->homeLink,
             'repair' => Context::getContext()->shop->theme_name == 'hark-repair',
             'shops' => $modulesShops,
-            'social' => [
+            /*'social' => [
                 'youtube' => [
                     'url' => '',
                     'img_src' => $this->getModulePath() . 'views/img/Youtube.svg',
@@ -165,7 +170,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
                     'url' => '',
                     'img_src' => $this->getModulePath() . 'views/img/Insta.svg',
                 ]
-            ]
+            ]*/
         ];
     }
 
@@ -174,17 +179,53 @@ class Hs_Topmenu extends Module implements WidgetInterface
         return true;
     }
 
+
+    public function getModulePath()
+    {
+        return '/modules/'.$this->name.'/';
+    }
+
+    /**
+     * @return string
+     */
+    public function hookDisplaySocialButtons()
+    {
+        $social = [
+            'youtube' => [
+                'url' => '',
+                'img_src' => $this->getModulePath() . 'views/img/Youtube.svg',
+            ],
+            'instagram' => [
+                'url' => '',
+                'img_src' => $this->getModulePath() . 'views/img/Insta.svg',
+            ]
+        ];
+        $this->context->smarty->assign('social', $social);
+
+        return $this->fetch('module:hs_topmenu/views/templates/widget/social.tpl');
+    }
+
+    /**
+     * @return string
+     */
+    public function hookDisplaySubShopsBlocks()
+    {
+        $modulesShops = $this->getHarkShops();
+        $this->context->smarty->assign('shops', $modulesShops);
+
+        return $this->fetch('module:hs_topmenu/views/templates/widget/footer_addresses.tpl');
+    }
+
     protected function getHarkShops() {
+        $stores = Store::getStores($this->context->language->id);
+
         $shopList = Context::getContext()->shop->getShops(false, true);
-/*        echo "<pre>";
-        var_dump($shopList);die;*/
         $moduleShops = [];
 
         $moduleShops['current_shop_id'] = Context::getContext()->shop->id;
         foreach ($shopList as $key => $shop) {
             if($key == 1) {
                 $moduleShops['mainShop']['id'] = $shop['id_shop'];
-                //$moduleShops['mainShop']['logo'] = _PS_IMG_.Configuration::get('PS_LOGO', null, null, $shop['id_shop']);
                 $moduleShops['mainShop']['logo'] = $this->getModulePath() . 'views/img/Hark.svg';
 
                 $moduleShops['mainShop']['url'] =  $shop['uri'];
@@ -192,29 +233,39 @@ class Hs_Topmenu extends Module implements WidgetInterface
             }
 
             if ($shop['theme_name'] === 'hark-repair') {
-                $moduleShops['subshops'][] = [
-                    'id' => $shop['id_shop'],
-                    'logo' => $this->getModulePath() . 'views/img/repair.svg',
-                    'url' =>  $shop['uri']
+                foreach ($stores as $store) {
+                    if ($store['name'] === 'repair') {
+                        $moduleShops['subshops'][] = [
+                            'id' => $shop['id_shop'],
+                            'name' => 'Repair',
+                            'logo' => $this->getModulePath() . 'views/img/repair.svg',
+                            'url' =>  $shop['uri'],
+                            'address1' => $store['address1'],
+                            'address2' => $store['address2'],
+                            'phone' => $store['phone'],
+                            'email' => $store['email']
+                        ];
+                    }
+                }
 
-                ];
             } else {
-                $moduleShops['subshops'][] = [
-                    'id' => $shop['id_shop'],
-                    'logo' => $this->getModulePath() . 'views/img/records.svg' ,
-                    'url' =>  $shop['uri']
-
-                ];
+                foreach ($stores as $store) {
+                    if ($store['name'] === 'records') {
+                        $moduleShops['subshops'][] = [
+                            'id' => $shop['id_shop'],
+                            'name' => 'Records',
+                            'logo' => $this->getModulePath() . 'views/img/records.svg' ,
+                            'url' =>  $shop['uri'],
+                            'address1' => $store['address1'],
+                            'address2' => $store['address2'],
+                            'phone' => $store['phone'],
+                            'email' => $store['email']
+                        ];
+                    }
+                }
             }
-
         }
-        ///var_dump($moduleShops);die;
 
         return $moduleShops;
-    }
-
-    public function getModulePath()
-    {
-        return '/modules/'.$this->name.'/';
     }
 }
