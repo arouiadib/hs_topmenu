@@ -25,7 +25,11 @@
  *}
 
 {if $repair}
-    {block name='header_nav'}
+    {block name='new_world'}
+        <div class="new-world">
+            <span class="new-world-message">{l s='HiFi Store devient HARK Repair'}</span>
+            <span class="new-world-close"></span>
+        </div>
     {/block}
 {/if}
 

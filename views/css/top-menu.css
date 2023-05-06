@@ -94,3 +94,61 @@ ul.main-menu li.main-site-logo img {
     -o-transform: translateY(-6px) rotate(-45deg);
     transform: translateY(-6px) rotate(-45deg);
 }
+
+.new-world {
+    background-color: black;
+    height: 28px;
+    text-align: center;
+}
+.new-world .new-world-message {
+    color: white;
+    text-align: center;
+    width: 90%;
+    display: inline-block;
+}
+
+.new-world .new-world-close{
+    border-radius: 50%;
+    padding: 0.5em;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    cursor: pointer;
+    z-index:111;
+    display: inline-block;
+    background-color: white;
+    float: right;
+    margin-right: 20px;
+    margin-top: 4px;
+
+}
+
+.new-world  .new-world-close:hover {
+    color: #ffffff;
+}
+
+.new-world  .new-world-close::before {
+    content: " ";
+    position: absolute;
+    display: block;
+    background-color: black;
+    width: 2px;
+    left: 7px;
+    top: 0px;
+    bottom: 0px;
+    transform: rotate(45deg);
+}
+
+.new-world-close::after {
+    content: " ";
+    position: absolute;
+    display: block;
+    background-color: black;
+    width: 2px;
+    height: 16px;
+    top: 0px;
+    left: 7px;
+    right: 0px;
+    transform: rotate(-45deg);
+}
+
