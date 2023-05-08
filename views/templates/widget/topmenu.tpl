@@ -34,7 +34,7 @@
 {/if}
 
 {block name='header_nav'}
-    <nav id="main-nav" class="header-nav">
+    <nav id="main-nav" class="header-nav  {*navbar-fixed-top*}">
         <div class="container-fluid">
             <div class="row">
                 <div class="hidden-sm-down">
