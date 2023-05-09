@@ -25,12 +25,16 @@
  *}
 
 {if $repair}
-    {block name='header_nav'}
+    {block name='new_world'}
+        <div class="new-world">
+            <span class="new-world-message">{l s='HiFi Store devient HARK Repair'}</span>
+            <span class="new-world-close"></span>
+        </div>
     {/block}
 {/if}
 
 {block name='header_nav'}
-    <nav id="main-nav" class="header-nav">
+    <nav id="main-nav" class="header-nav  {*navbar-fixed-top*}">
         <div class="container-fluid">
             <div class="row">
                 <div class="hidden-sm-down">
