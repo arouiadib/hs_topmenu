@@ -18,7 +18,7 @@
                     {$shop.address2}
                 </div>
                 <div class="mt-2 mb-2">
-                    {$shop.email} - {$shop.phone}
+                    <a href=mailto:“{$shop.email}”>Contact</a>
                 </div>
             </div>
             <div class="footer-block-links">
