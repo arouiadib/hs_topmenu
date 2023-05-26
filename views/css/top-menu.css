@@ -26,6 +26,7 @@
 
 .menu-container li {
     display: inline-block;
+    margin-left: 40px;
 }
 
 .menu-container.mobile li {
@@ -50,6 +51,7 @@ ul.main-menu li img.active {
 ul.main-menu li.main-site-logo {
     width: 128px;
     display: inline-block;
+    margin-left: 20px;
 }
 
 ul.main-menu li.main-site-logo a {

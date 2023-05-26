@@ -17,9 +17,11 @@
                 <div>
                     {$shop.address2}
                 </div>
-                <div class="mt-2 mb-2">
-                    <a href=mailto:“{$shop.email}”>Contact</a>
-                </div>
+                {if $shop.name == "Records"}
+                    <div class="mt-2 mb-2">
+                        <a href=mailto:“{$shop.email}”>{l s='Contact'}</a>
+                    </div>
+                {/if}
             </div>
             <div class="footer-block-links">
                 {assign var="hookName" value="displayFooter"|cat: $shop['name']|cat: "LinkList"}
