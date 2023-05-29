@@ -44,7 +44,7 @@
                         </div>
                         {*{hook h='displayNav1'}*}
                     </div>
-                    <div class="col-md-6 right-nav">
+                    <div class="col-md-6 right-nav {if $repair} repair {/if}">
                         <div class="col-md-8">
                             {hook h='displayNav2'}
                         </div>
