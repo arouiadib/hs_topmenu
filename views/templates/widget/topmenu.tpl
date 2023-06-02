@@ -34,15 +34,14 @@
 {/if}
 
 {block name='header_nav'}
-    <nav id="main-nav" class="header-nav  {*navbar-fixed-top*}">
+    <nav id="main-nav" class="header-nav">
         <div class="container-fluid">
             <div class="row">
                 <div class="hidden-sm-down">
                     <div class="col-md-6 col-xs-12">
                         <div class="menu-container">
-                                {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
+                            {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
                         </div>
-                        {*{hook h='displayNav1'}*}
                     </div>
                     <div class="col-md-6 right-nav {if $repair} repair {/if}">
                         <div class="col-md-8">
@@ -53,22 +52,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="hidden-md-up text-sm-center mobile">
-                    <div class="hamburger float-xs-right p-1" id="menu-icon">
-                        <span class="line"></span>
-                        <span class="line"></span>
-                        <span class="line"></span>
-                    </div>
-
-                    <div class="col-xs-6 top-logo p-1" id="_mobile_logo">
+                <div class="hidden-md-up mobile">
+                    <div class="col-xs-10 p-1" id="_mobile_logo">
                         <a href="{$shops.mainShop.url}">
                             <img
-                                class="logo img-fluid"
+                                class="{*logo img-fluid*}"
                                 src="{$shops.mainShop.logo}"
-                                alt="{*{$shop.name}*}"
-                                width="{*{$shop.logo_details.width}*}"
-                                height="{*{$shop.logo_details.height}*}">
+                                alt=""
+                                width=""
+                                height="40">
                         </a>
+                        {if $shops.current_shop.id_shop != $shops.mainShop.id}
+                        {*<a href="{$shops.mainShop.url}">*}
+                            <img
+                                class="{*logo img-fluid*}"
+                                src="{$shops.current_shop.logo}"
+                                alt=""
+                                width=""
+                                height="18">
+                        {*</a>*}
+                        {/if}
+                    </div>
+                    <div class="hamburger col-xs-2 pt-1 pl-1 pb-1 pr-0" id="menu-icon">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -77,57 +85,7 @@
     </nav>
     <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
         <div class="js-top-menu menu-container mobile" id="_mobile_top_menu">
-           {include file='module:hs_topmenu/views/templates/widget/logos-mobile.tpl'}
+           {include file='module:hs_topmenu/views/templates/widget/mobile-menu.tpl'}
         </div>
     </div>
 {/block}
-
-{*
-{if $repair}
-    {block name='header_nav'}
-        <nav id="*}
-{*mainNav*}{*
- second-nav" class="header-nav navbar *}
-{*navbar-fixed-top*}{*
-">
-            *}
-{*todo: keep id = mainNav for javascript in hompegae.js*}{*
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="hidden-sm-down">
-                        <div class="col-md-10 col-xs-12 nav1">
-                            <div>
-                                {include file='module:hs_topmenu/views/templates/widget/navigation_links.tpl'}
-                            </div>
-                        </div>
-                        <div class="col-md-2 right-nav">
-                        </div>
-                    </div>
-                    <div class="hidden-md-up mobile">
-                        <div>
-                            <div class="float-xs-right">
-                                <button class="navbar-toggler navbar-toggler-right"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#bs-example-navbar-collapse-2"
-                                        aria-controls="bs-example-navbar-collapse-2"
-                                        aria-expanded="false"
-                                        aria-label="Toggle navigation"
-                                >
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                            </div>
-                            <div class="float-xs-left"></div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-2">
-                            {include file='module:hs_topmenu/views/templates/widget/navigation_links.tpl'}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    {/block}
-{/if}
-*}

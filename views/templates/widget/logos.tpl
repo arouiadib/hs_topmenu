@@ -4,38 +4,34 @@
             <img
                 class="logo img-fluid"
                 src="{$shops.mainShop.logo}"
-                alt="{*{$shop.name}*}"
-                width="{*{$shop.logo_details.width}*}"
-                height="{*{$shop.logo_details.height}*}">
+                alt=""
+                width=""
+                height="">
         </a>
     </li>
     {foreach from=$shops.subshops item=shop key=key}
-        <li>
-            {if $shops.current_shop_id == $shop.id}
+        <li class="menu-li">
+            {if $shops.current_shop.id_shop == $shop.id}
                 <img
-                    class="logo img-fluid
-                            {if $shops.current_shop_id == $shop.id}
+                    class="{if $shops.current_shop.id_shop == $shop.id}
                                 active
-                            {/if}
-                            "
+                            {/if}"
                     src="{$shop.logo}"
-                    alt="{*{$shop.name}*}"
-                    width="{*{$shop.logo_details.width}*}"
-                    height="{*{$shop.logo_details.height}*}">
+                    alt=""
+                    width=""
+                    height="20">
             {else}
                 <a href="{$shop.url}">
                     <img
-                        class="logo img-fluid"
                         src="{$shop.logo}"
-                        alt="{*{$shop.name}*}"
-                        width="{*{$shop.logo_details.width}*}"
-                        height="{*{$shop.logo_details.height}*}">
+                        alt=""
+                        width=""
+                        height="20">
                 </a>
             {/if}
         </li>
     {/foreach}
 </ul>
-
 
 
 

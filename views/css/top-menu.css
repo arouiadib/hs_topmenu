@@ -1,13 +1,22 @@
 /*CSS of only HARK menu */
 
+
+@media (max-width: 991px) {
+    .menu-container li.menu-li{
+        margin-left: 0px;
+    }
+}
+
+@media (min-width: 992px) {
+    .menu-container li.menu-li{
+        margin-left: 40px;
+    }
+}
+
+
 .menu-container {
     position: relative;
     height: 71px;
-}
-
-.menu-container.mobile {
-    position: relative;
-    height: initial;
 }
 
 .menu-container ul {
@@ -17,22 +26,9 @@
     transform: translateY(-50%);
 }
 
-.menu-container.mobile ul {
-    list-style-type: none;
-    position: initial;
-    top: initial;
-    transform: none;
-}
 
 .menu-container li {
     display: inline-block;
-    margin-left: 40px;
-}
-
-.menu-container.mobile li {
-    display: block;
-    margin: 0 20px;
-    border-bottom: 1px solid grey;
 }
 
 .menu-container li img {
@@ -40,12 +36,59 @@
     display: inline-block;
 }
 
+
+
+#mobile_top_menu_wrapper {
+    padding: 0;
+    margin: 0;
+}
+
+.menu-container.mobile {
+    position: relative;
+    height: initial;
+}
+
+.menu-container.mobile ul {
+    list-style-type: none;
+    position: initial;
+    top: initial;
+    transform: none;
+    margin-bottom: 8rem;
+}
+
+.menu-container.mobile li.menu-li, .menu-container.mobile li.back-li {
+    display: block;
+    margin: 10px 20px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+
+.menu-container.mobile li.repair-li, .menu-container.mobile li.back-li {
+    display: block;
+    margin: 10px 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.menu-container.mobile li.repair-li.repair-last{
+    margin-bottom: 50px;
+}
+
+
+.menu-container.mobile li img {
+    display: inline-block;
+    width: inherit;
+}
+
+
+
+
 ul.main-menu li img.active {
-    -webkit-filter: grayscale(100%) contrast(30%);
-    -moz-filter: grayscale(100%) contrast(30%);
-    -o-filter: grayscale(100%) contrast(30%);
-    -ms-filter: grayscale(100%) contrast(30%);
-    filter: grayscale(100%) contrast(30%);
+    -webkit-filter: grayscale(100%) contrast(10%);
+    -moz-filter: grayscale(100%) contrast(10%);
+    -o-filter: grayscale(100%) contrast(10%);
+    -ms-filter: grayscale(100%) contrast(10%);
+    filter: grayscale(100%) contrast(10%);
 }
 
 ul.main-menu li.main-site-logo {
@@ -79,8 +122,13 @@ ul.main-menu li.main-site-logo img {
 }
 
 
+#header .header-nav #menu-icon{
+    margin: 0;
+}
+
 #menu-icon .line:nth-child(1){
     opacity: 0;
+    margin-top: 12px;
 }
 
 #menu-icon.is-active .line:nth-child(2){
