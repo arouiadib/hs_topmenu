@@ -161,16 +161,6 @@ class Hs_Topmenu extends Module implements WidgetInterface
             'store_link' => $this->homeLink,
             'repair' => Context::getContext()->shop->theme_name == 'hark-repair',
             'shops' => $modulesShops,
-            /*'social' => [
-                'youtube' => [
-                    'url' => '',
-                    'img_src' => $this->getModulePath() . 'views/img/Youtube.svg',
-                ],
-                'instagram' => [
-                    'url' => '',
-                    'img_src' => $this->getModulePath() . 'views/img/Insta.svg',
-                ]
-            ]*/
         ];
     }
 
@@ -222,7 +212,21 @@ class Hs_Topmenu extends Module implements WidgetInterface
         $shopList = Context::getContext()->shop->getShops(false, true);
         $moduleShops = [];
 
-        $moduleShops['current_shop_id'] = Context::getContext()->shop->id;
+        $moduleShops['current_shop']['id_shop'] = Context::getContext()->shop->id;
+        foreach ($shopList as $key => $shop) {
+            if($key == 1) {
+                continue;
+            }
+
+            if ($shop['theme_name'] === 'hark-repair' && $shop['id_shop'] == Context::getContext()->shop->id) {
+                $moduleShops['current_shop']['logo'] = $this->getModulePath() . 'views/img/repair.svg';
+            }
+            if ($shop['theme_name'] === 'hark-records' && $shop['id_shop'] == Context::getContext()->shop->id){
+                $moduleShops['current_shop']['logo'] = $this->getModulePath() . 'views/img/records.svg';
+            }
+        }
+
+
         foreach ($shopList as $key => $shop) {
             if($key == 1) {
                 $moduleShops['mainShop']['id'] = $shop['id_shop'];
@@ -266,6 +270,7 @@ class Hs_Topmenu extends Module implements WidgetInterface
             }
         }
 
+        //var_dump($moduleShops['mainShop']['logo']);die;
         return $moduleShops;
     }
 }

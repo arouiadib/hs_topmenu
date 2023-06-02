@@ -7,8 +7,8 @@
                     class="logo img-fluid"
                     src="{$shop.logo}"
                     alt="{$shop.name}"
-                    width="{*{$shop.logo_details.width}*}"
-                    height="{*{$shop.logo_details.height}*}">
+                    width=""
+                    height="">
             </div>
             <div class="footer-block-content">
                 <div>
