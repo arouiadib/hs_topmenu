@@ -4,11 +4,11 @@
         <div class="col-sm-6 col-xl-4 footer-block">
             <div class="footer-block-logo">
                 <img
-                    class="logo img-fluid"
+                    class="logo"
                     src="{$shop.logo}"
                     alt="{$shop.name}"
                     width=""
-                    height="">
+                    height="26">
             </div>
             <div class="footer-block-content">
                 <div>
