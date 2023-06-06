@@ -27,8 +27,10 @@
 {if $repair}
     {block name='new_world'}
         <div class="new-world">
-            <span class="new-world-message">{l s='HiFi Store devient HARK Repair'}</span>
-            <span class="new-world-close"></span>
+            <span class="new-world-message col-xs-10 col-sm-11">{l s='HiFi Store devient HARK Repair'}</span>
+            <span class="col-xs-2 col-sm-1">
+                <span class="new-world-close"></span>
+            </span>
         </div>
     {/block}
 {/if}
@@ -53,7 +55,7 @@
                     </div>
                 </div>
                 <div class="hidden-md-up mobile">
-                    <div class="col-xs-10 p-1" id="_mobile_logo">
+                    <div class="col-xs-10 col-sm-11 pt-1" id="_mobile_logo">
                         <a href="{$shops.mainShop.url}">
                             <img
                                 class="{*logo img-fluid*}"
@@ -73,10 +75,13 @@
                         {*</a>*}
                         {/if}
                     </div>
-                    <div class="hamburger col-xs-2 pt-1 pl-1 pb-1 pr-0" id="menu-icon">
-                        <span class="line"></span>
-                        <span class="line"></span>
-                        <span class="line"></span>
+                    <div class="hamburger col-xs-2 col-sm-1 pt-1" id="menu-icon">
+                        <div>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+
                     </div>
                     <div class="clearfix"></div>
                 </div>
