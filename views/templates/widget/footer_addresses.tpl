@@ -18,7 +18,7 @@
                     {$shop.address2}
                 </div>
                 {if $shop.name == "Records"}
-                    <div class="mt-2 mb-2">
+                    <div class="contact mb-2">
                         <a href=mailto:“{$shop.email}”>{l s='Contact'}</a>
                     </div>
                 {/if}
