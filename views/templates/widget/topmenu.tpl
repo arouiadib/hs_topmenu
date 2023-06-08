@@ -71,11 +71,11 @@
                                 src="{$shops.current_shop.logo}"
                                 alt=""
                                 width=""
-                                height="18">
+                                height="20">
                         {*</a>*}
                         {/if}
                     </div>
-                    <div class="hamburger col-xs-2 col-sm-1 pt-1" id="menu-icon">
+                    <div class="hamburger col-xs-2 col-sm-1" id="menu-icon">
                         <div>
                             <span class="line"></span>
                             <span class="line"></span>

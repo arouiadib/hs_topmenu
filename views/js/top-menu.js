@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     // todo: add coockie management
     $(".new-world-close").click(function(){
-        $(this).parent().hide();
+        $(this).parent().parent().hide();
         $('.right-nav').removeClass('repair');
     });
 });

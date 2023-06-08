@@ -15,16 +15,16 @@
 
     {foreach from=$shops.subshops item=shop key=key}
         {if $shops.current_shop.id_shop != $shop.id}
-        <li class="menu-li">
-            <a href="{$shop.url}">
-                <img
-                        class="{*logo img-fluid*}"
-                        src="{$shop.logo}"
-                        alt=""
-                        width=""
-                        height="20">
-            </a>
-        </li>
+            <li class="menu-li">
+                <a href="{$shop.url}">
+                    <img
+                            class="{*logo img-fluid*}"
+                            src="{$shop.logo}"
+                            alt=""
+                            width=""
+                            height="20">
+                </a>
+            </li>
         {/if}
     {/foreach}
 
