@@ -39,41 +39,45 @@
     <nav id="main-nav" class="header-nav">
         <div class="container-fluid">
             <div class="row">
-                <div class="hidden-sm-down">
-                    <div class="col-md-6 col-xs-12">
+                <div class="hidden-md-down">
+                    <div class="col-md-6 col-xs-12 p-0">
                         <div class="menu-container">
                             {include file='module:hs_topmenu/views/templates/widget/logos.tpl'}
                         </div>
                     </div>
                     <div class="col-md-6 right-nav {if $repair} repair {/if}">
-                        <div class="col-md-8">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-6">
                             {hook h='displayNav2'}
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             {hook h="displaySocialButtons" mod="hs_topmenu"}
                         </div>
                     </div>
                 </div>
-                <div class="hidden-md-up mobile">
-                    <div class="col-xs-10 col-sm-11 pt-1" id="_mobile_logo">
-                        <a href="{$shops.mainShop.url}">
-                            <img
-                                class="{*logo img-fluid*}"
-                                src="{$shops.mainShop.logo}"
-                                alt=""
-                                width=""
-                                height="40">
-                        </a>
+                <div class="hidden-lg-up mobile">
+                    <div class="col-xs-10 col-sm-11" id="_mobile_logo">
+                        <div class="main-logo col-xs-6 col-sm-3">
+                            <a class="" href="{$shops.mainShop.url}">
+                                <img
+                                        class="{*logo img-fluid*} "
+                                        src="{$shops.mainShop.logo}"
+                                        alt=""
+                                        width=""
+                                        height="31">
+                            </a>
+                        </div>
+                        <div class="sub-logo col-xs-6 col-sm-4 pr-0 pl-2"">
                         {if $shops.current_shop.id_shop != $shops.mainShop.id}
-                        {*<a href="{$shops.mainShop.url}">*}
-                            <img
-                                class="{*logo img-fluid*}"
-                                src="{$shops.current_shop.logo}"
-                                alt=""
-                                width=""
-                                height="20">
-                        {*</a>*}
+                                <img
+                                        class="{*logo img-fluid*}"
+                                        src="{$shops.current_shop.logo}"
+                                        alt=""
+                                        width=""
+                                        height="20">
                         {/if}
+                        </div>
                     </div>
                     <div class="hamburger col-xs-2 col-sm-1" id="menu-icon">
                         <div>
@@ -88,7 +92,7 @@
             </div>
         </div>
     </nav>
-    <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
+    <div id="mobile_top_menu_wrapper" class="row hidden-lg-up" style="display:none;">
         <div class="js-top-menu menu-container mobile" id="_mobile_top_menu">
            {include file='module:hs_topmenu/views/templates/widget/mobile-menu.tpl'}
         </div>

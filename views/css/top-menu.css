@@ -9,10 +9,9 @@
 
 @media (min-width: 992px) {
     .menu-container li.menu-li{
-        margin-left: 40px;
+       /* margin-left: 40px;*/
     }
 }
-
 
 .menu-container {
     position: relative;
@@ -21,18 +20,70 @@
 
 .menu-container ul {
     list-style-type: none;
-    position: absolute;
+/*    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%);*/
+    height: 71px;
+    margin-bottom: 0;
 }
 
 
 .menu-container li {
     display: inline-block;
+    height: 71px;
+    position: relative;
 }
 
+.menu-container li a {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-container li.records a {
+    height: 26px;
+}
+.menu-container li.records a > img{
+    height: 26px;
+}
+
+
+.menu-container li.repair a {
+    height: 23px;
+}
+.menu-container li.repair a > img {
+    height: 23px;
+}
+
+
+/*
 .menu-container li img {
     display: inline-block;
+}
+*/
+
+#_mobile_logo .main-logo {
+    height: 71px;
+    position: relative;
+
+}
+
+#_mobile_logo .main-logo a{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#_mobile_logo .sub-logo {
+    position: relative;
+    height: 71px;
+}
+
+#_mobile_logo .sub-logo img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 
@@ -55,16 +106,20 @@
     margin-bottom: 8rem;
 }
 
+.menu-container.mobile ul li{
+   height: 33px;
+}
+
 .menu-container.mobile li.menu-li, .menu-container.mobile li.back-li {
     display: block;
-    margin: 10px 15px;
+    margin: 2px 30px;
     border-bottom: 1px solid grey;
     padding-bottom: 10px;
 }
 
 .menu-container.mobile li.repair-li, .menu-container.mobile li.back-li {
     display: block;
-    margin: 10px 15px;
+    margin: 2px 30px;
     text-transform: uppercase;
     font-size: 13px;
 }
@@ -81,7 +136,11 @@
 }
 
 
-
+ul.main-menu li span {
+    position: relative;
+    height: 71px;
+    display: block;
+}
 
 ul.main-menu li img.active {
     -webkit-filter: grayscale(100%) contrast(10%);
@@ -89,12 +148,22 @@ ul.main-menu li img.active {
     -o-filter: grayscale(100%) contrast(10%);
     -ms-filter: grayscale(100%) contrast(10%);
     filter: grayscale(100%) contrast(10%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+ul.main-menu li.records img.active {
+    height: 26px;
+
+}
+ul.main-menu li.repair img.active {
+    height: 23px;
 }
 
 ul.main-menu li.main-site-logo {
-    height: 31px;
+    height: 71px;
     display: inline-block;
-    margin-left: 17px;
+    /*margin-left: 17px;*/
 }
 
 ul.main-menu li.main-site-logo a {
@@ -150,6 +219,7 @@ ul.main-menu li.main-site-logo img {
 @media (max-width: 767px) {
     .new-world .new-world-message {
         text-align: left;
+        padding-left: 30px;
     }
 }
 

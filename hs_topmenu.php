@@ -182,11 +182,11 @@ class Hs_Topmenu extends Module implements WidgetInterface
     {
         $social = [
             'youtube' => [
-                'url' => '',
+                'url' => 'https://www.youtube.com/@HarkStores/featured',
                 'img_src' => $this->getModulePath() . 'views/img/Youtube.svg',
             ],
             'instagram' => [
-                'url' => '',
+                'url' => 'https://www.instagram.com/hark.paris/',
                 'img_src' => $this->getModulePath() . 'views/img/Insta.svg',
             ]
         ];
