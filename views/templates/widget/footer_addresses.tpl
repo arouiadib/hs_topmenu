@@ -18,13 +18,13 @@
             <div>
                 {$shop.address2}
             </div>
+        </div>
+        <div class="footer-block-links">
             {if $shop.name == "Records"}
-                <div class="contact mb-2">
+                <div class="contact">
                     <a href=mailto:“{$shop.email}”>{l s='Contact'}</a>
                 </div>
             {/if}
-        </div>
-        <div class="footer-block-links">
             {assign var="hookName" value="displayFooter"|cat: $shop['name']|cat: "LinkList"}
             {widget name="ps_linklist" hook=$hookName}
         </div>

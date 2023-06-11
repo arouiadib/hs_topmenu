@@ -46,6 +46,7 @@
 }
 .menu-container li.records a > img{
     height: 26px;
+    width: 171px;
 }
 
 
@@ -54,6 +55,7 @@
 }
 .menu-container li.repair a > img {
     height: 23px;
+    width: 102px;
 }
 
 
@@ -92,6 +94,21 @@
     padding: 0;
     margin: 0;
 }
+
+#_mobile_top_menu  .block_newsletter {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+
+#_mobile_top_menu  .social-links {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    float: none !important;
+}
+#_mobile_top_menu input[name="submitNewsletter"] {
+    right: 18px;
+}
+
 
 .menu-container.mobile {
     position: relative;
