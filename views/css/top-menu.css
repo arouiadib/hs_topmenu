@@ -171,10 +171,12 @@ ul.main-menu li img.active {
 }
 ul.main-menu li.records img.active {
     height: 26px;
+    width: 171px;
 
 }
 ul.main-menu li.repair img.active {
     height: 23px;
+    width: 102px;
 }
 
 ul.main-menu li.main-site-logo {
