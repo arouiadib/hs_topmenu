@@ -51,11 +51,11 @@
 
 
 .menu-container li.repair a {
-    height: 23px;
+    height: 26px;
 }
 .menu-container li.repair a > img {
-    height: 23px;
-    width: 102px;
+    height: 26px;
+/*    width: 102px;*/
 }
 
 
@@ -175,8 +175,8 @@ ul.main-menu li.records img.active {
 
 }
 ul.main-menu li.repair img.active {
-    height: 23px;
-    width: 102px;
+    height: 26px;
+/*    width: 102px;*/
 }
 
 ul.main-menu li.main-site-logo {
