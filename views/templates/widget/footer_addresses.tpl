@@ -18,6 +18,15 @@
             <div>
                 {$shop.address2}
             </div>
+            <div>
+                {if $shop.name == "Records"}
+                    {l s='Open on Tuesday to Sunday' d='Modules.Hstopmenu.Shop'}
+                    <br>
+                    {l s='From 12pm to 7.30pm' d='Modules.Hstopmenu.Shop'}
+                 {else}
+                    {l s='On appointment only' d='Modules.Hstopmenu.Shop'}
+                {/if}
+            </div>
         </div>
         <div class="footer-block-links">
             {if $shop.name == "Records"}
